@@ -14,7 +14,7 @@ describe('Tgalaope1', () => {
       const author1 = result.stdout.trim();
       const outputFolder = 'D:/Testercy/Logs/2.TestAll/June/Produccion/19-06-2023';
       const timestamp = moment().format('DD-MM-YYYY-HH-mm-ss');
-      const fileName = `logs_${timestamp}_${author1}.json`;
+      const fileName = `logs_${timestamp}_${author1}.txt`;
       const filePath = path.join(outputFolder, fileName);
       logs.push({ authortest: `Author: ${author1}` });
       cy.writeFile(filePath, JSON.stringify(logs, null, 2), [])
@@ -77,10 +77,6 @@ describe('Tgalaope1', () => {
     cy.log('Selecciona mes Diciembre')
     cy.get('[href="availability.xhtml?barco=y2uGVyk1fpk%3D&mes=cItoji52KlI%3D&anio=UxlBDQ%2F%2BUls%3D"]').click()
       .then(capturarTiempoDeCarga)
-    cy.wait(1000)
-    cy.get('[data-ri="8"] > .rowTogglerStyle > .ui-row-toggler > :nth-child(1)').click()
-    cy.wait(1000)
-    cy.get('.cerrardispo').click()
     cy.wait(1000)
     cy.get('#j_idt102_label').click()
     cy.get('#j_idt102_4').click()//2024
