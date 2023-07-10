@@ -12,7 +12,7 @@ describe('Tgalaope1', () => {
   before(() => {//obtener author de las pruebas
     cy.exec('git config --global user.name').then((result) => {
       const author1 = result.stdout.trim();
-      const outputFolder = 'D:/Testercy/Logs/2.TestAll/June/Produccion/19-06-2023';
+      const outputFolder = 'D:/Testercy/Logs/TestAll/Produccion/July/10-07-2023/';
       const timestamp = moment().format('DD-MM-YYYY-HH-mm-ss');
       const fileName = `logs_${timestamp}_${author1}.txt`;
       const filePath = path.join(outputFolder, fileName);
@@ -55,12 +55,13 @@ describe('Tgalaope1', () => {
     cy.pause()    
     cy.get('#botonLogin').click()
     cy.get('#txtBuscarbarco').type('Galapagos Horizon')
+    cy.wait(1000) 
     cy.get('#btnbuscarBarco').click()
     cy.wait(1000)
-    cy.get('#j_idt125\\:0\\:dynaButton > .fa').scrollIntoView().click()
+    cy.get('#j_idt117\\:0\\:dynaButton > .fa').scrollIntoView().click()
     cy.wait(1000)
     cy.log('Selecciona el año de 2023')
-    cy.get('#j_idt125\\:0\\:j_idt140 > .ui-menu-list > :nth-child(1) > .ui-menuitem-link').scrollIntoView().click()//default 2023
+    cy.get('#j_idt117\\:0\\:j_idt132 > .ui-menu-list > :nth-child(1) > .ui-menuitem-link').scrollIntoView().click()//default 2023
     cy.wait(1000)
     cy.log('Selecciona mes Abril')
     cy.get('[href="availability.xhtml?barco=y2uGVyk1fpk%3D&mes=QkCMjIEUxu0%3D&anio=UxlBDQ%2F%2BUls%3D"]').click()
@@ -78,8 +79,8 @@ describe('Tgalaope1', () => {
     cy.get('[href="availability.xhtml?barco=y2uGVyk1fpk%3D&mes=cItoji52KlI%3D&anio=UxlBDQ%2F%2BUls%3D"]').click()
       .then(capturarTiempoDeCarga)
     cy.wait(1000)
-    cy.get('#j_idt102_label').click()
-    cy.get('#j_idt102_4').click()//2024
+    cy.get('#j_idt94_label').click()
+    cy.get('#j_idt94_4').click()//2024
     cy.log('Selecciona año 2024')
     cy.wait(1000)
     cy.log('Selecciona mes Abril')
@@ -98,8 +99,8 @@ describe('Tgalaope1', () => {
     cy.get('[href="availability.xhtml?barco=y2uGVyk1fpk%3D&mes=cItoji52KlI%3D&anio=fxx69LgMYFE%3D"]').click()
       .then(capturarTiempoDeCarga)
     cy.wait(1000)
-    cy.get('#j_idt102_label').click()
-    cy.get('#j_idt102_5').click()//2025
+    cy.get('#j_idt94_label').click()
+    cy.get('#j_idt94_5').click()//2025
     cy.log('Selecciona año2025')
     cy.wait(1000)
     cy.log('Selecciona mes Abril')
@@ -118,8 +119,8 @@ describe('Tgalaope1', () => {
     cy.get('[href="availability.xhtml?barco=y2uGVyk1fpk%3D&mes=cItoji52KlI%3D&anio=JdrmaTM3zCI%3D"]').click()
       .then(capturarTiempoDeCarga)
     cy.wait(1000)
-    cy.get('#j_idt102_label').click()
-    cy.get('#j_idt102_6').click()//2026
+    cy.get('#j_idt94_label').click()
+    cy.get('#j_idt94_6').click()//2026
     cy.log('Selecciona año 2026')
     cy.wait(1000)
     cy.log('Selecciona mes Abril')
@@ -139,7 +140,7 @@ describe('Tgalaope1', () => {
       .then(capturarTiempoDeCarga)
     cy.wait(1000)
     cy.get('#table-header > :nth-child(2)').click()
-    cy.get('#j_idt6\\:j_idt56').click()  
+    cy.get('#j_idt48').click()   
 
   })
 })
