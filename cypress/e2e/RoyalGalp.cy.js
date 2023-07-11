@@ -1,4 +1,4 @@
-describe('Royal Falapgos', () => {
+describe('Ambiente Produccion-Royal Falapgos', () => {
   Cypress.on('uncaught:exception', (err, runnable) => {
     if (err.message.includes("Cannot read properties of undefined (reading 'trim')")) {
       // Manejar el error aquí, por ejemplo, mostrar un mensaje personalizado

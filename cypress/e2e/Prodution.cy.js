@@ -3,7 +3,7 @@ import { capturarTiempoDeCarga } from '../support/utils.js'; //environment varia
 import path from 'path';
 import moment from 'moment/moment.js';
 
-describe('Teste2eGal', () => {
+describe('Ambiente Produccion Fleet Management Availability', () => {
   beforeEach(function () {
     const specName = this.currentTest.title; // Obtener el nombre del spec actual // Obtener el nombre del spec actual
     logs.push({ message: `Title: ${specName}` }); // Agregar el nombre del spec como un log separador
