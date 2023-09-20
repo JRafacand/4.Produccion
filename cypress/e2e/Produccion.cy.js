@@ -12,7 +12,7 @@ describe('Ambiente Produccion Fleet Management Availability', () => {
   before(() => {//obtener author de las pruebas
     cy.exec('git config --global user.name').then((result) => {
       const author1 = result.stdout.trim();
-      const outputFolder = 'D:/TESTERCY/LOGS/TESTE2EGAL/PRODUCCION/SEPTEMBER/12-09-2023/';
+      const outputFolder = 'D:/TESTERCY/LOGS/TESTE2EGAL/PRODUCCION/SEPTEMBER/19-09-2023/';
       const timestamp = moment().format('DD-MM-YYYY-HH-mm-ss');
       const fileName = `logs_${timestamp}_${author1}.txt`;
       const filePath = path.join(outputFolder, fileName);
@@ -49,11 +49,11 @@ describe('Ambiente Produccion Fleet Management Availability', () => {
     cy.visit(urlgal)
     cy.get("#name").type("averdezoto@galavail.com")
     cy.get('#botonNext').click()
-    cy.get('#j_idt17').select(1)
+    cy.get('#j_idt18').select(1)
     cy.get('#password').type('6093Anita')
     cy.wait(1000)
     cy.pause()    
-    cy.get('#botonLogin').click()
+    cy.get('#botonLogin').should('be.visible').click({force:true})
     cy.get('#txtBuscarbarco').type('Galapagos Horizon')
     cy.wait(1000) 
     cy.get('#btnbuscarBarco').click()
