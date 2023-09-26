@@ -9,7 +9,8 @@
   "description": "Para produccion",
   "main": "index.js",
   "scripts": {
-    "test": "cypress open"
+    "test": "cypress open",
+    "video": "cypress run --record --headed --key 2f8dec80-d8cf-46df-965c-759ed07649a6 --spec 'cypress/e2e/Produccion.cy.js'"
   },
   "author": "Rafael Candilejo",
   "license": "ISC"

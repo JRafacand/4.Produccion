@@ -23,7 +23,48 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+import path from 'path';
+import moment from 'moment/moment.js';
+beforeEach(function () {
+    const specName = this.currentTest.title; // Obtener el nombre del spec actual // Obtener el nombre del spec actual
+    logs.push({ message: `Title: ${specName}` }); // Agregar el nombre del spec como un log separador
+    Cypress.env('specName', specName); // Agregar el nombre del spec como una variable global', filePath);  
+  });
+  before(() => {//obtener author de las pruebas
+    cy.exec('git config --global user.name').then((result) => {
+      const author1 = result.stdout.trim();
+      const outputFolder = 'D:/TESTERCY/LOGS/TESTE2EGAL/PRODUCCION/SEPTEMBER/26-09-2023/';
+      const timestamp = moment().format('DD-MM-YYYY-HH-mm-ss');
+      const fileName = `logs_${timestamp}_${author1}.json`;
+      const filePath = path.join(outputFolder, fileName);
+      logs.push({ authortest: `Author: ${author1}` });
+      cy.writeFile(filePath, JSON.stringify(logs, null, 2), [])
+      Cypress.env('filePath', filePath);
+      });
+  });
+  
+    Cypress.on('test:after:run', (test) => {//valido que se capture el log hasta que existe un fallo
+    if (test.state === 'failed') {
+      console.log('Test failed');
+    }
+  });
+  
+  Cypress.on('uncaught:exception', (err, runnable) => {
+    let uncaught = [runnable]
+    console.log(uncaught, 'entre')
+    //uncaught.
+    return false//capturo uncaught:exception para que cyporess continue con la prueba    
+  });
 
-Cypress.on('uncaught:exception', (err, runnable) => {//capturo uncaught:exception para que cyporess continue con la prueba 
-    return false
-  })
+  const logs = []
+  Cypress.env('logs', logs);//declaro logs como variable global 
+  Cypress.on('log:added', (log) => {//mensajes del log, capturo tiempos de respuesta
+    const message = log.Event? `${log.CONSOLEPROPS.Event}: ${log.consoleProps.URL}` : `${log.consoleProps.Command}: ${log.message}`
+    console.log(log.wallClockStartedAt,'log.wallClockStartedAt')
+    const startTime = new Date(log.wallClockStartedAt).getTime();//capturo el tiempo
+    const endTime = new Date().getTime();
+    const duration = `Tiempo en mili segundos del evento Cypress ${((endTime - startTime))}`;
+    console.log(duration,'duration');
+    logs.push({ message: message, duration: duration });/* - ${currentSpec} */
+  });
+
