@@ -12,7 +12,7 @@ describe('Ambiente Produccion Fleet Management Availability', () => {
   before(() => {//obtener author de las pruebas
     cy.exec('git config --global user.name').then((result) => {
       const author1 = result.stdout.trim();
-      const outputFolder = 'D:/TESTERCY/LOGS/TESTE2EGAL/PRODUCCION/SEPTEMBER/26git -09-2023/';
+      const outputFolder = 'D:/TESTERCY/LOGS/TESTE2EGAL/PRODUCCION/SEPTEMBER/26-09-2023/';
       const timestamp = moment().format('DD-MM-YYYY-HH-mm-ss');
       const fileName = `logs_${timestamp}_${author1}.txt`;
       const filePath = path.join(outputFolder, fileName);
@@ -30,7 +30,7 @@ describe('Ambiente Produccion Fleet Management Availability', () => {
   const logs = []
   Cypress.env('logs', logs);//declaro logs como variable global 
   Cypress.on('log:added', (log) => {//mensajes del log, capturo tiempos de respuesta
-    const message = log.event ? `${log.consoleProps.Event}: ${log.consoleProps.URL}` : `${log.consoleProps.Command}: ${log.message}`
+    const message = log.event ? `${log.CONSOLEPROPS.Event}: ${log.consoleProps.URL}` : `${log.consoleProps.Command}: ${log.message}`
     console.log(log.wallClockStartedAt,'log.wallClockStartedAt')
     const startTime = new Date(log.wallClockStartedAt).getTime();//capturo el tiempo
     const endTime = new Date().getTime();
