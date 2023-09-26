@@ -23,3 +23,7 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.on('uncaught:exception', (err, runnable) => {//capturo uncaught:exception para que cyporess continue con la prueba 
+    return false
+  })
