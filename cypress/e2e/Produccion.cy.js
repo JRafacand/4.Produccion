@@ -12,7 +12,7 @@ describe('Ambiente Produccion Fleet Management Availability', () => {
   before(() => {//obtener author de las pruebas
     cy.exec('git config --global user.name').then((result) => {
       const author1 = result.stdout.trim();
-      const outputFolder = 'D:/TESTERCY/LOGS/TESTE2EGAL/PRODUCCION/SEPTEMBER/19-09-2023/';
+      const outputFolder = 'D:/TESTERCY/LOGS/TESTE2EGAL/PRODUCCION/SEPTEMBER/26git -09-2023/';
       const timestamp = moment().format('DD-MM-YYYY-HH-mm-ss');
       const fileName = `logs_${timestamp}_${author1}.txt`;
       const filePath = path.join(outputFolder, fileName);
@@ -21,9 +21,10 @@ describe('Ambiente Produccion Fleet Management Availability', () => {
       Cypress.env('filePath', filePath);
       });
   });
-  Cypress.on('test:after:run', (test, runnable) => {//valido que se capture el log hasta que existe un fallo
+  
+  Cypress.on('test:after:run', (test) => {//valido que se capture el log hasta que existe un fallo
     if (test.state === 'failed') {
-      isTestFailed = true;
+      console.log('Test failed');
     }
   });
   const logs = []
@@ -38,13 +39,9 @@ describe('Ambiente Produccion Fleet Management Availability', () => {
     logs.push({ message: message, duration: duration });/* - ${currentSpec} */
   });
 
-  Cypress.on('uncaught:exception', (err, runnable) => {//capturo uncaught:exception para que cyporess continue con la prueba 
-    const error_message = err.message;
-    return false
-  })
+ 
 
   const urlgal = 'https://galavail.com/galavail-web/login.xhtml';
-  const cookkie2 = 'https://galavail.com/galavail-web/web/management/fleet.xhtml';
   it('Fleet Management Availability', () => {
     cy.visit(urlgal)
     cy.get("#name").type("averdezoto@galavail.com")
