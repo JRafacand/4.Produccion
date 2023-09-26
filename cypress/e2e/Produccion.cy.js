@@ -22,7 +22,7 @@ describe('Ambiente Produccion Fleet Management Availability', () => {
       });
   });
   
-  Cypress.on('test:after:run', (test) => {//valido que se capture el log hasta que existe un fallo
+    Cypress.on('test:after:run', (test) => {//valido que se capture el log hasta que existe un fallo
     if (test.state === 'failed') {
       console.log('Test failed');
     }
