@@ -33,7 +33,7 @@ beforeEach(function () {
   before(() => {//obtener author de las pruebas
     cy.exec('git config --global user.name').then((result) => {
       const author1 = result.stdout.trim();
-      const outputFolder = 'D:/TESTERCY/LOGS/TESTE2EGAL/PRODUCCION/SEPTEMBER/26-09-2023/';
+      const outputFolder = 'D:/TESTERCY/LOGS/TESTE2EGAL/PRODUCCION/SEPTEMBER/02-10-2023/';
       const timestamp = moment().format('DD-MM-YYYY-HH-mm-ss');
       const fileName = `logs_${timestamp}_${author1}.json`;
       const filePath = path.join(outputFolder, fileName);
