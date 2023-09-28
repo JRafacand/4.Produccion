@@ -31,8 +31,7 @@ beforeEach(function () {
     Cypress.env('specName', specName); // Agregar el nombre del spec como una variable global', filePath);  
   });
   before(() => {//obtener author de las pruebas
-    cy.exec('git config --global user.name').then((result) => {
-      const author1 = result.stdout.trim();
+      const author1 = 'JrafaCand';
       const outputFolder = 'D:/TESTERCY/LOGS/TESTE2EGAL/PRODUCCION/SEPTEMBER/02-10-2023/';
       const timestamp = moment().format('DD-MM-YYYY-HH-mm-ss');
       const fileName = `logs_${timestamp}_${author1}.json`;
@@ -40,8 +39,7 @@ beforeEach(function () {
       logs.push({ authortest: `Author: ${author1}` });
       cy.writeFile(filePath, JSON.stringify(logs, null, 2), [])
       Cypress.env('filePath', filePath);
-      });
-  });
+   });
   
     Cypress.on('test:after:run', (test) => {//valido que se capture el log hasta que existe un fallo
     if (test.state === 'failed') {
