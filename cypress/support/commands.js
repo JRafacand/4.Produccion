@@ -32,9 +32,9 @@ beforeEach(function () {
   });
   before(() => {//obtener author de las pruebas
       const author1 = 'JrafaCand';
-      const outputFolder = 'D:/TESTERCY/LOGS/TESTE2EGAL/PRODUCCION/SEPTEMBER/02-10-2023/';
+      const outputFolder = 'D:/TESTERCY/LOGS/TESTE2EGAL/PRODUCCION/october/03-10-2023/';
       const timestamp = moment().format('DD-MM-YYYY-HH-mm-ss');
-      const fileName = `logs_${timestamp}_${author1}.json`;
+      const fileName = `logs_${timestamp}_${author1}.txt`;
       const filePath = path.join(outputFolder, fileName);
       logs.push({ authortest: `Author: ${author1}` });
       cy.writeFile(filePath, JSON.stringify(logs, null, 2), [])
